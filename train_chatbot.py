@@ -40,3 +40,16 @@ for intent in data['intents']:
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
+word_stems = sorted(set(word_stems))
+classes = sorted(set(classes))
+
+'''
+Creating the bag-of-words vector
+'''
+
+for processed_token, intent in documents:
+    bow_vector = [0] * len(word_stems)
+    for i in range(len(processed_token)):
+        if processed_token[i] in word_stems:
+            bow_vector[i] = 1
+
