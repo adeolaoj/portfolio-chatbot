@@ -47,9 +47,17 @@ classes = sorted(set(classes))
 Creating the bag-of-words vector
 '''
 
+training_data = []
+
 for processed_token, intent in documents:
     bow_vector = [0] * len(word_stems)
-    for i in range(len(processed_token)):
-        if processed_token[i] in word_stems:
-            bow_vector[i] = 1
+    for token in processed_token:
+        if token in word_stems:
+            bow_vector[word_stems.index(token)] = 1
+
+    label_vector = [0] * len(classes) # intent labels
+    label_index = classes.index(intent) # label index
+    label_vector[label_index] = 1 # one-hot encoding the labels
+
+    training_data.append((bow_vector, label_vector))
 
