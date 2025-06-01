@@ -4,6 +4,11 @@ import nltk
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 nltk.download('punkt')
+import tensorflow as tf
+from tensorflow.keras.models import Sequential # type: ignore
+from tensorflow.keras.layers import Dense # type: ignore
+import pickle
+
 
 ps = PorterStemmer()
 
@@ -47,7 +52,7 @@ classes = sorted(set(classes))
 Creating the bag-of-words vector
 '''
 
-training_data = []
+training_data = []  # will store tuples containing bag of words vector and encoded labels
 
 for processed_token, intent in documents:
     bow_vector = [0] * len(word_stems)
@@ -60,4 +65,32 @@ for processed_token, intent in documents:
     label_vector[label_index] = 1 # one-hot encoding the labels
 
     training_data.append((bow_vector, label_vector))
+
+X = np.array([item[0] for item in training_data])
+y = np.array([item[1] for item in training_data])
+
+
+'''
+Creating a sequential model for the chatbot
+'''
+
+model = Sequential()
+
+model.add((tf.keras.layers.Dense(units=8, activation='relu', input_shape=(len(word_stems),)))) # input layer
+model.add(tf.keras.layers.Dense(units=8, activation='relu')) #hidden layer
+model.add(tf.keras.layers.Dense(units=len(y[0]), activation='softmax')) #output layer
+
+# compilation of model
+model.compile(
+    loss='categorical_crossentropy',  # calculate loss by comparing actual label and probability distribution
+    optimizer='adam',
+    metrics=['accuracy']
+)
+
+# training the model
+model.fit(X, y, epochs=200, batch_size=8, verbose=1)
+
+model.save("chatbot_model.h5") # save output
+pickle.dump({'words': word_stems, 'classes': classes}, open("metadata.pkl", "wb"))
+
 
