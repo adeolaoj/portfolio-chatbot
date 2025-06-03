@@ -4,6 +4,7 @@ import nltk
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 nltk.download('punkt')
+nltk.download('punkt_tab')
 import tensorflow as tf
 from tensorflow.keras.models import Sequential # type: ignore
 from tensorflow.keras.layers import Dense # type: ignore
@@ -90,7 +91,7 @@ model.compile(
 # training the model
 model.fit(X, y, epochs=200, batch_size=8, verbose=1)
 
-model.save("chatbot_model.h5") # save output
+model.save("chatbot_model.keras") # save output
 pickle.dump({'words': word_stems, 'classes': classes}, open("metadata.pkl", "wb"))
 
 
