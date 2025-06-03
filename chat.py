@@ -44,7 +44,21 @@ while True:
         if token in word_stems:
             bow_vector[word_stems.index(token)] = 1
 
-    bow_vector = np.array(bow_vector).reshape(1, -1)
+    bow_vector = np.array(bow_vector).reshape(1, -1) #convert vector to numpy array
+
+    # predict the intent of the user input using the model
+    output = model.predict(bow_vector)[0]
+
+    # find the intent with the highest probability
+    prediction_index = np.argmax(output) # index of highest probable intent
+    intent = classes[prediction_index] # tag associated with intent
+    confidence = output[prediction_index]
+
+    print("Intent: ", intent, "\n")
+    print("Confidence: ", confidence, "\n")
+
+
+
 
     
 
