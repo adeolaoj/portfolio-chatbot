@@ -77,8 +77,8 @@ Creating a sequential model for the chatbot
 
 model = Sequential()
 
-model.add((tf.keras.layers.Dense(units=8, activation='relu', input_shape=(len(word_stems),)))) # input layer
-model.add(tf.keras.layers.Dense(units=8, activation='relu')) #hidden layer
+model.add((tf.keras.layers.Dense(units=4, activation='relu', input_shape=(len(word_stems),)))) # input layer
+model.add(tf.keras.layers.Dense(units=4, activation='relu')) #hidden layer
 model.add(tf.keras.layers.Dense(units=len(y[0]), activation='softmax')) #output layer
 
 # compilation of model
@@ -89,7 +89,7 @@ model.compile(
 )
 
 # training the model
-model.fit(X, y, epochs=200, batch_size=8, verbose=1)
+model.fit(X, y, epochs=110, batch_size=4, verbose=1)
 
 model.save("chatbot_model.keras") # save output
 pickle.dump({'words': word_stems, 'classes': classes}, open("metadata.pkl", "wb"))

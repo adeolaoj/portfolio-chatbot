@@ -8,8 +8,7 @@ from nltk.stem import PorterStemmer
 import pickle
 
 # load the trained model
-model = tf.keras.models.load_model("chatbot_model.h5")
-model.save("chatbot_model.keras")  # convert model to native keras file format
+model = tf.keras.models.load_model("chatbot_model.keras")
 
 # load the metadata
 with open('metadata.pkl', 'rb') as file:
@@ -54,7 +53,10 @@ while True:
     intent = classes[prediction_index] # tag associated with intent
     confidence = output[prediction_index]
 
-    print("Intent: ", intent, "\n")
+    if confidence <= 0.2:  # catch unrelated messages
+        intent = "fallback"
+
+    print("Intent: ", intent)
     print("Confidence: ", confidence, "\n")
 
 

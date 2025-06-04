@@ -2,7 +2,20 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey there", "Hey", "How's it going?", "What's up?", "Howdy", "Yo", "hru"],
+      "patterns": ["Hi",
+                   "Hello",
+                   "Hey there",
+                   "Hey",
+                   "How's it going?",
+                   "What's up?",
+                   "Howdy",
+                   "Yo",
+                   "hru",
+                   "greetings!",
+                   "salutations!",
+                   "good morning",
+                   "good afternoon",
+                   "good night"],
       "responses": ["Hello! This is Adeola's chatbot", "Hi, what would you like to know?", "Hey! What can I do for you?"]
     },
     {
@@ -42,7 +55,7 @@
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "That's helpful", "tyty", "Appreciate it", "Thanks for sharing", "thx", "ty"],
+      "patterns": ["Thanks", "Thank you", "That's helpful", "tyty", "Appreciate it", "Thanks for sharing", "thx", "ty", "i appreciate it!", "thanks for the information!", "that was helpful"],
       "responses": ["You're welcome!", "Anytime!", "Glad I was able to help.", "Of course!"]
     },
     {
@@ -62,6 +75,7 @@
                    "do you code?",
                    "what do u do",
                    "wht skills do you have?",
+                   "what's your skillset?",
                    "what r ur skills?"],
       "responses": ["I know Java, Python, HTML/CSS, C/C++!", "I'm good at Java, Python, HTML/CSS, C/C++, and I'm learning frameworks like Tensorflow and Pytorch"]
     },
@@ -103,8 +117,23 @@
     },
     {
       "tag": "fallback",
-      "patterns": [],
-      "responses": ["Hmm, I'm not sure how to answer that. But I can tell you about my skills or projects!"]
+      "patterns": ["I like dogs",
+                   "What is the weather?",
+                   "Tell me a joke",
+                   "Random question",
+                   "How tall is the Eiffel Tower?",
+                   "Do you know the time?",
+                   "Blah blah",
+                   "I have a cat",
+                   "I am hungry",
+                   "dogs are cool",
+                   "i love dogs",
+                   "i love cats",
+                   "i love animals",
+                   "are you pregnant",
+                   "do you like reading,",
+                   "do you read books"],
+      "responses": ["Hmm, I can't answer that right now... buttt I can tell you about my skills or projects!"]
     }
 
   ]
