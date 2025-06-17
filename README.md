@@ -1,7 +1,7 @@
 # Portfolio Chatbot (Terminal Version)
 
 ## 💬 Description
-This is a terminal-based version of the chatbot featured on my portfolio website. You can interact with it by asking about my skills, projects, fun facts, and more.
+This is a terminal-based version of the chatbot featured on my portfolio website. You can interact with it by asking about my skills, projects, fun facts, and more. Note: the main branch has the outdated model. The most recently updated trained model is in the **master branch.**
 
 ## 🛠️ Technical Details
 - **Natural Language Processing**: User input is tokenized, stemmed (using NLTK's PorterStemmer), and converted into a bag-of-words vector.
